@@ -29,19 +29,6 @@
 </ol> -->
 
 {% if inputted %}
-<<<<<<< Updated upstream
-  {% if success %}
-    <ol>
-      {% for center in vaccine_centers %}
-        <li><h2>{{ center.name }}</h2></li>
-      {% endfor %}
-    </ol>
-  {% else %}
-    <h1>Please enter a proper address</h1>
-  {% endif %}
-{% else %} -->
-  <!-- <h1>Please enter your address</h1>
-=======
 {% if success %}
 <ol>
   <p>We have succeeded</p>
@@ -59,6 +46,5 @@
 {% endif %}
 {% else %}
 <!--<h1>Please enter your address</h1>-->
->>>>>>> Stashed changes
 {% endif %}
 {% endblock %}
