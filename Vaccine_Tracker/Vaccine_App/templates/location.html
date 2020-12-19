@@ -2,7 +2,17 @@
 {% block body_block %}
 <br>
 
-<h1>This is Location View </h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Please enter your address</h3>
+    </div>
+    <div class="col-7">
+      <input id="nameInput" class="form-control" type="text" placeholder="Address">
+    </div>
+  </div>
+</div>
+
 <form enctype="multipart/form-data" method="post">
   {% csrf_token %}
   {{ form.as_p }}
@@ -19,6 +29,7 @@
 </ol> -->
 
 {% if inputted %}
+<<<<<<< Updated upstream
   {% if success %}
     <ol>
       {% for center in vaccine_centers %}
@@ -30,5 +41,24 @@
   {% endif %}
 {% else %} -->
   <!-- <h1>Please enter your address</h1>
+=======
+{% if success %}
+<ol>
+  <p>We have succeeded</p>
+  {% for center in vaccine_centers %}
+  <li>
+    <h2>Example</h2>
+  </li>
+  <li>
+    <h2>{{ center.name }}</h2>
+  </li>
+  {% endfor %}
+</ol>
+{% else %}
+<h1>Please enter a proper address</h1>
+{% endif %}
+{% else %}
+<!--<h1>Please enter your address</h1>-->
+>>>>>>> Stashed changes
 {% endif %}
 {% endblock %}
