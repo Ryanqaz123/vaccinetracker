@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from . import models
 from Vaccine_App.models import VaccineCenter
-from django.views.generic import TemplateView, ListView, DetailView, View
+from django.views.generic import TemplateView, ListView, DetailView, View, CreateView
 from Vaccine_App.forms import LocationForm
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
@@ -31,6 +31,8 @@ class LocationView(FormMixin, ListView):
             for center in centers.iterator():
                 loc1 = geolocator.geocode(loc)
                 loc2 = geolocator.geocode(center.address)
+                center.latitude = str(loc2.latitude)
+                center.longitude = str(loc2.longitude)
                 l1 = (loc1.latitude, loc1.longitude)
                 l2 = (loc2.latitude, loc2.longitude)
                 center.distance = int(round(geodesic(l1, l2).miles))
@@ -61,12 +63,13 @@ class LoginView(View):
     # }
     # return render(request, template_name, context)
 
-class RegisterView(View):
+class RegisterView(CreateView):
     template_name = 'register.html'
-    # context = {
-    #
-    # }
-    # return render(request, template_name, context)
+    model = VaccineCenter
+    fields = ['name', 'address', 'email', 'phone', 'description', 'pfp']
+
+    def get_success_url(self):
+        return render(request, 'location.html')
 
 
 class DeleteView(View):
