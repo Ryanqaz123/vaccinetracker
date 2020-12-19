@@ -22,20 +22,12 @@
 <br>
 <br>
 <br>
-<!-- <ol>
-  {% for center in vaccine_centers %}
-    <li><p>{{ center.email }}</p></li>
-  {% endfor %}
-</ol> -->
+
 
 {% if inputted %}
 {% if success %}
 <ol>
-  <p>We have succeeded</p>
   {% for center in vaccine_centers %}
-  <li>
-    <h2>Example</h2>
-  </li>
   <li>
     <h2>{{ center.name }}</h2>
   </li>
@@ -45,6 +37,6 @@
 <h1>Please enter a proper address</h1>
 {% endif %}
 {% else %}
-<!--<h1>Please enter your address</h1>-->
+<h1>Please enter your address</h1>
 {% endif %}
 {% endblock %}
