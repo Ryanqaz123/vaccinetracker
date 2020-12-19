@@ -12,7 +12,6 @@ class LocationView(FormMixin, ListView):
     model = models.VaccineCenter
     template_name = 'location.html'
     form_class = LocationForm
-    context_object_name = 'vaccine_centers'
     def get(self, request):
         form = self.get_form()
         context = {
@@ -35,13 +34,16 @@ class LocationView(FormMixin, ListView):
                 l1 = (loc1.latitude, loc1.longitude)
                 l2 = (loc2.latitude, loc2.longitude)
                 center.distance = int(round(geodesic(l1, l2).miles))
-                print(center.distance)
+                center.save()
+
+            vaccine_centers = sorted(VaccineCenter.objects.all(), key= lambda n: n.distance)
             context = {
                 'form': form,
                 'inputted': True,
                 'success': True,
-            }
-            queryset = VaccineCenter.objects.order_by('distance')
+                'vaccine_centers': vaccine_centers,
+                }
+
             return render(request, self.template_name, context)
         except:
             context = {
