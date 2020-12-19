@@ -22,23 +22,22 @@
 <br>
 
 <div id="map"></div>
-<div id="listDiv" class="list-group mt-5" style="display: none">
+<!-- <div id="listDiv" class="list-group mt-5" style="display: none">
   <a href="#" class="list-group-item list-group-item-action">Cras justo odio </a>
   <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
   <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
   <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
   <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-</div>
+</div> -->
 {% if inputted %}
-{% if success %}
-<ol>
-  {% for center in vaccine_centers %}
-  <li>
-    <h2>{{ center.name }}</h2>
-  </li>
-  {% endfor %}
-</ol>
-{% else %}
+  {% if success %}
+    <div id="listDiv" class="list-group mt-5" >
+    {% for center in vaccine_centers %}
+
+        <a href="#" class="list-group-item list-group-item-action">{{ center.name }}</a>
+    {% endfor %}
+    </div>
+  {% else %}
 <h1>Please enter a proper address</h1>
 {% endif %}
 {% else %}
