@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<br>
+
+<h1>This is Location View </h1>
+<form enctype="multipart/form-data" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <input type="submit" value="Submit">
+</form>
+<br>
+<br>
+<br>
+{% if inputted %}
+  {% if success %}
+    <ol>
+      <p>We have succeeded</p>
+      {% for center in vaccine_centers %}
+        <h2>Example</h2>
+        <h2>{{ center.name }}</h2>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <h1>Please enter a proper address</h1>
+  {% endif %}
+{% else %}
+  <h1>Please enter your address</h1>
+{% endif %}
+{% endblock %}
