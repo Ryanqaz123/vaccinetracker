@@ -2,16 +2,6 @@
 {% block body_block %}
 <br>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h3>Please enter your address</h3>
-    </div>
-    <div class="col-7">
-      <input id="nameInput" class="form-control" type="text" placeholder="Address">
-    </div>
-  </div>
-</div>
 
 <form enctype="multipart/form-data" method="post">
   {% csrf_token %}
