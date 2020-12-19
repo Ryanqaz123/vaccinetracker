@@ -2,19 +2,33 @@
 {% block body_block %}
 <br>
 
-
+<script>
+  var trigger = false;
+  function toggler(divId) {
+    if(!trigger){
+    $("#" + divId).toggle();
+  }
+  trigger = true;
+}
+</script>
 <form enctype="multipart/form-data" method="post">
   {% csrf_token %}
   {{ form.as_p }}
 
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" onclick="toggler('listDiv')">
 </form>
 <br>
 <br>
 <br>
 
 <div id="map"></div>
-
+<div id="listDiv" class="list-group mt-5" style="display: none">
+  <a href="#" class="list-group-item list-group-item-action">Cras justo odio </a>
+  <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+</div>
 {% if inputted %}
 {% if success %}
 <ol>
@@ -28,6 +42,6 @@
 <h1>Please enter a proper address</h1>
 {% endif %}
 {% else %}
-<h1>Please enter your address</h1>
+<!--<h1>Please enter your address</h1>-->
 {% endif %}
 {% endblock %}
