@@ -54,34 +54,3 @@ class LocationView(FormMixin, ListView):
                 'success': False,
             }
             return render(request, self.template_name, context)
-
-
-class LoginView(View):
-    template_name = 'login.html'
-    # context = {
-    #
-    # }
-    # return render(request, template_name, context)
-
-class RegisterView(CreateView):
-    template_name = 'register.html'
-    model = VaccineCenter
-    fields = ['name', 'address', 'email', 'phone', 'description', 'pfp']
-
-    def get_success_url(self):
-        return render(request, 'location.html')
-
-
-class DeleteView(View):
-    template_name = 'delete.html'
-    # context = {
-    #
-    # }
-    # return render(request, template_name, context)
-
-class UpdateView(View):
-    template_name = 'update.html'
-    # context = {
-    #
-    # }
-    # return render(request, template_name, context)
